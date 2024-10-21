@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenges-frontend
+  labels:
+    app: challenges-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenges-frontend
+  template:
+    metadata:
+      labels:
+        app: challenges-frontend
+    spec:
+      containers:
+      - image:  "{{ $values.frontend.image.repository }}/{{ $values.frontend.image.image }}:{{ $values.frontend.image.tag }}"
+        imagePullPolicy: {{ $values.image.pullPolicy }}
+        name: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenges-backend
+  labels:
+    app: challenges-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenges-backend
+  template:
+    metadata:
+      labels:
+        app: challenges-backend
+    spec:
+      containers:
+        - image:  "{{ $values.backend.image.repository }}/{{ $values.backend.image.tag }}:{{ $values.backend.image.tag }}"
+          name: backend
+          ports:
+            - containerPort: 80
+          environment:
+              - name: KUBEFLOW_URL
+                value: https://ml-staging.cern.ch
+              - name: EXPERIMENT_ID
+                value: 
+              - name: DEBUG
+                value: True
+              - name: PUBLIC_KEYS_CERN_SSO_URL
+                value: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+              - name: AUDIENCE_CERN_SSO
+                value: <path:kv/data/kubernetes/services/challenges/cern/sso#audience#1>
+              - name: DATABASE_URL
+                value: <path:kv/data/kubernetes/services/challenges/cern/db#connection_url#1>
+              - name: KF_PIPELINES_SA_TOKEN_PATH
+                value: /var/run/secrets/kubeflow/pipelines/token
+          volumeMounts:
+            - mountPath: /var/run/secrets/kubeflow/pipelines
+              name: volume-kf-pipeline-token
+              readOnly: true
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: volume-kf-pipeline-token
+          projected:
+            sources:
+              - serviceAccountToken:
+                  path: token
+                  expirationSeconds: 7200
+                  ## defined by the `TOKEN_REVIEW_AUDIENCE` environment variable on the `ml-pipeline` deployment
+                  audience: pipelines.kubeflow.org   

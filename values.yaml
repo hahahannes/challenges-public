@@ -1,0 +1,9 @@
+frontend:
+  repository: registry.cern.ch/kubernetes
+  tag: latest
+  image: challenges-frontend
+
+backend:
+  repository: registry.cern.ch/kubernetes
+  tag: latest
+  image: challenges-backend
