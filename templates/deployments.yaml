@@ -67,7 +67,7 @@ spec:
               - name: PUBLIC_KEYS_CERN_SSO_URL
                 value: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
               - name: AUDIENCE_CERN_SSO
-                value: <path:kv/data/kubernetes/services/challenges/cern/sso#audience#1>
+                value: <path:kv/data/kubernetes/services/challenges/cern/sso#audience#2>
               - name: DATABASE_URL
                 value: <path:kv/data/kubernetes/services/challenges/cern/db#connection_url#1>
               - name: KF_PIPELINES_SA_TOKEN_PATH
