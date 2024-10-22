@@ -18,7 +18,7 @@ spec:
       - image:  "{{ .Values.frontend.repository }}/{{ .Values.frontend.image }}:{{ .Values.frontend.tag }}"
         imagePullPolicy: {{ .Values.frontend.pullPolicy }}
         name: frontend
-        environment:
+        env:
           - name: API_BASE_URL
             value: https://ml-challenges.cern.ch/api
 ---
@@ -44,7 +44,7 @@ spec:
           imagePullPolicy: {{ .Values.backend.pullPolicy }}
           ports:
             - containerPort: 80
-          environment:
+          env:
               - name: KUBEFLOW_URL
                 value: https://ml-staging.cern.ch
               - name: EXPERIMENT_ID
