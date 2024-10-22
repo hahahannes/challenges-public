@@ -15,8 +15,8 @@ spec:
         app: challenges-frontend
     spec:
       containers:
-      - image:  "{{ $values.frontend.image.repository }}/{{ $values.frontend.image.image }}:{{ $values.frontend.image.tag }}"
-        imagePullPolicy: {{ $values.image.pullPolicy }}
+      - image:  "{{ .Values.frontend.repository }}/{{ .Values.frontend.image }}:{{ .Values.frontend.tag }}"
+        imagePullPolicy: {{ .Values.frontend.pullPolicy }}
         name: frontend
         environment:
           - name: API_BASE_URL
@@ -39,8 +39,9 @@ spec:
         app: challenges-backend
     spec:
       containers:
-        - image:  "{{ $values.backend.image.repository }}/{{ $values.backend.image.tag }}:{{ $values.backend.image.tag }}"
+        - image:  "{{ .Values.backend.repository }}/{{ .Values.backend.image }}:{{ .Values.backend.tag }}"
           name: backend
+          imagePullPolicy: {{ .Values.backend.pullPolicy }}
           ports:
             - containerPort: 80
           environment:

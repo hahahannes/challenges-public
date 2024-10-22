@@ -2,8 +2,10 @@ frontend:
   repository: registry.cern.ch/ml-challenges
   tag: staging-latest
   image: frontend
+  pullPolicy: Always
 
 backend:
   repository: registry.cern.ch/ml-challenges
   tag: staging-latest
   image: backend
+  pullPolicy: Always
