@@ -21,6 +21,8 @@ spec:
         env:
           - name: API_BASE_URL
             value: http://localhost:8083
+          - name: SSO_CLIENT_ID
+            value: "hannes"
 ---
 apiVersion: v1
 kind: Service
