@@ -1,0 +1,9 @@
+frontend:
+  repository: registry.cern.ch/ml-challenges
+  tag: staging-latest
+  image: frontend
+
+backend:
+  repository: registry.cern.ch/ml-challenges
+  tag: staging-latest
+  image: backend

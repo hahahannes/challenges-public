@@ -18,6 +18,9 @@ spec:
       - image:  "{{ $values.frontend.image.repository }}/{{ $values.frontend.image.image }}:{{ $values.frontend.image.tag }}"
         imagePullPolicy: {{ $values.image.pullPolicy }}
         name: frontend
+        environment:
+          - name: API_BASE_URL
+            value: https://ml-challenges.cern.ch/api
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -44,7 +47,7 @@ spec:
               - name: KUBEFLOW_URL
                 value: https://ml-staging.cern.ch
               - name: EXPERIMENT_ID
-                value: 
+                value: challenges
               - name: DEBUG
                 value: True
               - name: PUBLIC_KEYS_CERN_SSO_URL
