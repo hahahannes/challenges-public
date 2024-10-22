@@ -50,7 +50,7 @@ spec:
               - name: EXPERIMENT_ID
                 value: challenges
               - name: DEBUG
-                value: True
+                value: "True"
               - name: PUBLIC_KEYS_CERN_SSO_URL
                 value: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
               - name: AUDIENCE_CERN_SSO
