@@ -20,7 +20,7 @@ spec:
         name: frontend
         env:
           - name: API_BASE_URL
-            value: https://ml-challenges.cern.ch/api
+            value: https://localhost:8083
 ---
 apiVersion: v1
 kind: Service
