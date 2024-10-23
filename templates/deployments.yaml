@@ -22,7 +22,9 @@ spec:
           - name: API_BASE_URL
             value: http://localhost:8083
           - name: SSO_CLIENT_ID
-            value: "hannes"
+            value: hannes
+          - name: SSO_ISSUER
+            value: https://keycloak-qa.cern.ch/auth/realms/cern
 ---
 apiVersion: v1
 kind: Service
