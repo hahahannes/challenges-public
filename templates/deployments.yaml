@@ -20,11 +20,11 @@ spec:
         name: frontend
         env:
           - name: API_BASE_URL
-            value: http://localhost:8083
+            value: "{{ .Values.frontend.apiBaseUrl }}"
           - name: SSO_CLIENT_ID
-            value: hannes
+            value: "{{ .Values.frontend.sso.clientId }}"
           - name: SSO_ISSUER
-            value: https://keycloak-qa.cern.ch/auth/realms/cern
+            value: "{{ .Values.frontend.sso.issuer }}"
 ---
 apiVersion: v1
 kind: Service
@@ -61,13 +61,13 @@ spec:
             - containerPort: 80
           env:
               - name: KUBEFLOW_URL
-                value: https://ml-staging.cern.ch
+                value: "{{ .Values.backend.kubeflow.url }}"
               - name: EXPERIMENT_ID
-                value: challenges
+                value: "{{ .Values.backend.kubeflow.experimentId }}"
               - name: DEBUG
-                value: "True"
+                value:  "{{ .Values.backend.debug }}"
               - name: PUBLIC_KEYS_CERN_SSO_URL
-                value: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+                value: "{{ .Values.backend.urlPublicKeysSSO }}"
               - name: AUDIENCE_CERN_SSO
                 value: <path:kv/data/kubernetes/services/challenges/cern/sso#audience#2>
               - name: DATABASE_URL
