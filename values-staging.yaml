@@ -5,8 +5,8 @@ frontend:
   pullPolicy: Always
   apiBaseUrl: http://localhost:8083
   sso:
-    issuer: https://keycloak-qa.cern.ch/auth/realms/cern
-    clientId: hannes
+    issuer: https://auth.cern.ch/auth/realms/cern
+    clientId: challenges-staging
     requireHttps: "true"
 
 backend:
@@ -15,7 +15,7 @@ backend:
   image: backend
   pullPolicy: Always
   debug: "True"
-  urlPublicKeysSSO: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+  urlPublicKeysSSO: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
   
   kubeflow:
     url: https://ml-staging.cern.ch
