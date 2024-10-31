@@ -3,7 +3,7 @@ frontend:
   tag: staging-latest
   image: frontend
   pullPolicy: Always
-  apiBaseUrl: http://localhost:8083
+  apiBaseUrl: http://ml-staging.cern.ch/challenges/api
   sso:
     issuer: https://auth.cern.ch/auth/realms/cern
     clientId: challenges-staging
@@ -15,7 +15,9 @@ backend:
   image: backend
   pullPolicy: Always
   debug: "True"
-  urlPublicKeysSSO: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+  sso:
+    urlPublicKeys: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+    audience: challenges-staging
   
   kubeflow:
     url: https://ml-staging.cern.ch

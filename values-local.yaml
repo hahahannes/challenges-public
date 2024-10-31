@@ -15,8 +15,10 @@ backend:
   image: backend
   pullPolicy: Always
   debug: "True"
-  urlPublicKeysSSO: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
-  
+  sso:
+    urlPublicKeys: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+    audience: hannes 
+    
   kubeflow:
     url: https://ml-staging.cern.ch
     experimentId: challenges

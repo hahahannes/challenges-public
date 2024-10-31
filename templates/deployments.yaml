@@ -69,9 +69,9 @@ spec:
               - name: DEBUG
                 value:  "{{ .Values.backend.debug }}"
               - name: PUBLIC_KEYS_CERN_SSO_URL
-                value: "{{ .Values.backend.urlPublicKeysSSO }}"
+                value: "{{ .Values.backend.sso.urlPublicKeys }}"
               - name: AUDIENCE_CERN_SSO
-                value: <path:kv/data/kubernetes/services/challenges/cern/sso#audience#2>
+                value: "{{ .Values.backend.sso.audience }}"
               - name: DATABASE_URL
                 value: <path:kv/data/kubernetes/services/challenges/cern/db#connection_url#1>
               - name: KF_PIPELINES_SA_TOKEN_PATH
