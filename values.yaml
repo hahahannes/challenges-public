@@ -1,0 +1,20 @@
+istio:
+  enableVirtualService: true 
+  
+frontend:
+  repository: registry.cern.ch/ml-challenges
+  image: frontend
+  pullPolicy: Always
+  sso:
+    issuer: https://auth.cern.ch/auth/realms/cern
+    requireHttps: "true"
+
+backend:
+  repository: registry.cern.ch/ml-challenges
+  image: backend
+  pullPolicy: Always
+  sso:
+    urlPublicKeys: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+  
+  kubeflow:
+    experimentId: challenges

@@ -1,24 +1,14 @@
 frontend:
-  repository: registry.cern.ch/ml-challenges
   tag: staging-latest
-  image: frontend
-  pullPolicy: Always
   apiBaseUrl: http://ml-staging.cern.ch/challenges/api
   sso:
-    issuer: https://auth.cern.ch/auth/realms/cern
     clientId: challenges-staging
-    requireHttps: "true"
 
 backend:
-  repository: registry.cern.ch/ml-challenges
   tag: staging-latest
-  image: backend
-  pullPolicy: Always
   debug: "True"
   sso:
-    urlPublicKeys: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
     audience: challenges-staging
   
   kubeflow:
     url: https://ml-staging.cern.ch
-    experimentId: challenges
