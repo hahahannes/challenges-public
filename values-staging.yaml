@@ -7,6 +7,7 @@ frontend:
 backend:
   tag: staging-latest
   debug: "True"
+  databaseUrl: <path:kv/data/mlops/services/challenges/staging/db#connection_url#1>
   sso:
     audience: challenges-staging
   

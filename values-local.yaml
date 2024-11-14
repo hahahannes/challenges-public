@@ -18,6 +18,7 @@ backend:
   image: backend
   pullPolicy: Always
   debug: "True"
+  databaseUrl: <path:kv/data/mlops/services/challenges/hannesja/db#connection_url#1>
   sso:
     urlPublicKeys: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
     audience: hannes 

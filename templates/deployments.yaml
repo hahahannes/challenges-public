@@ -73,7 +73,7 @@ spec:
               - name: AUDIENCE_CERN_SSO
                 value: "{{ .Values.backend.sso.audience }}"
               - name: DATABASE_URL
-                value: <path:kv/data/kubernetes/services/challenges/cern/db#connection_url#1>
+                value: "{{ .Values.backend.databaseUrl }}"
               - name: KF_PIPELINES_SA_TOKEN_PATH
                 value: /var/run/secrets/kubeflow/pipelines/token
           volumeMounts:
