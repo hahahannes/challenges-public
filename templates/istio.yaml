@@ -4,19 +4,40 @@ kind: VirtualService
 metadata:
   name: challenges-frontend-vs
 spec:
+  gateways:
+    ## the istio gateway which is serving kubeflow
+    - kubeflow/kubeflow-gateway
   hosts:
-  - challenges.ml.cern.ch
+    - '*'
   http:
-  - match:
-    - uri:
-        prefix: "/api"
-    route:
-    - destination:
-        host: backend-svc.challenges.svc.cluster.local
-        port: 80
-  - route:
-    - destination:
-        host: frontend-svc.challenges.svc.cluster.local
-        port: 80
+    # Backend
+    - headers:
+        request:
+          add:
+            x-forwarded-prefix: /challenges
+      match:
+        - uri:
+            prefix: /challenges/api
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: backend-svc.challenges.svc.cluster.local
+            port: 80
+
+    # UI
+    - headers:
+        request:
+          add:
+            x-forwarded-prefix: /challenges
+      match:
+        - uri:
+            prefix: /challenges/ui
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: frontend-svc.challenges.svc.cluster.local
+            port: 80
 {{- else }}
 {{- end }}
