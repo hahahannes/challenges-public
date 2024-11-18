@@ -3,6 +3,7 @@ frontend:
   apiBaseUrl: http://ml-staging.cern.ch/challenges/api
   sso:
     clientId: challenges-staging
+    enable: "false"
 
 backend:
   tag: staging-latest

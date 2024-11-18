@@ -11,6 +11,7 @@ frontend:
     issuer: https://keycloak-qa.cern.ch/auth/realms/cern
     clientId: hannes
     requireHttps: "false"
+    enable: "false"
 
 backend:
   repository: registry.cern.ch/ml-challenges

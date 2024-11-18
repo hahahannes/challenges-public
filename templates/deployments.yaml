@@ -27,6 +27,8 @@ spec:
             value: "{{ .Values.frontend.sso.issuer }}"
           - name: SSO_REQUIRE_HTTPS
             value: "{{ .Values.frontend.sso.requireHttps }}"
+          - name: SSO_ENABLE
+            value: "{{ .Values.frontend.sso.enable }}"
 ---
 apiVersion: v1
 kind: Service
