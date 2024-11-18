@@ -3,19 +3,15 @@ istio:
   
 frontend:
   repository: registry.cern.ch/ml-challenges
-  tag: v0.0.5-alpha
+  tag: v0.0.6-alpha
   image: frontend
   pullPolicy: Always
   apiBaseUrl: http://localhost:8083
-  sso:
-    issuer: https://keycloak-qa.cern.ch/auth/realms/cern
-    clientId: hannes
-    requireHttps: "false"
-    enable: "false"
+  baseUrl: https://ml-next.cern.ch/challenges/ui/
 
 backend:
   repository: registry.cern.ch/ml-challenges
-  tag: v0.0.5-alpha
+  tag: v0.0.1-alpha
   image: backend
   pullPolicy: Always
   debug: "True"

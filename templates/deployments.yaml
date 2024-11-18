@@ -78,6 +78,8 @@ spec:
                 value: "{{ .Values.backend.databaseUrl }}"
               - name: KF_PIPELINES_SA_TOKEN_PATH
                 value: /var/run/secrets/kubeflow/pipelines/token
+              - name: NAMESPACE_FOR_SUBMISSIONS
+                value: "{{ .Values.backend.namespaceSubmissions }}"
           volumeMounts:
             - mountPath: /var/run/secrets/kubeflow/pipelines
               name: volume-kf-pipeline-token

@@ -6,13 +6,16 @@ frontend:
   image: frontend
   pullPolicy: Always
   sso:
-    issuer: https://auth.cern.ch/auth/realms/cern
-    requireHttps: "true"
+    #issuer: https://auth.cern.ch/auth/realms/cern
+    #issuer: https://keycloak-qa.cern.ch/auth/realms/cern
+    #requireHttps: "true"
+    enable: "false"
 
 backend:
   repository: registry.cern.ch/ml-challenges
   image: backend
   pullPolicy: Always
+  namespaceSubmissions: challenges
   sso:
     urlPublicKeys: https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
   
