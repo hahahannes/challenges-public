@@ -1,15 +1,12 @@
 frontend:
-  tag: v0.0.5-latest
+  tag: v0.0.6-staging
   apiBaseUrl: http://ml-staging.cern.ch/challenges/api
-  #sso:
-    # clientId: challenges-staging
+  baseUrl: https://ml-staging.cern.ch/challenges/ui/
 
 backend:
-  tag: v0.0.5-latest
+  tag: v0.0.1-staging
   debug: "True"
   databaseUrl: <path:kv/data/mlops/services/challenges/staging/db#connection_url#1>
-  sso:
-    audience: challenges-staging # TODO: kubeflow ?
   
   kubeflow:
     url: https://ml-staging.cern.ch

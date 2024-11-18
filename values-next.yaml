@@ -1,21 +1,12 @@
 frontend:
-  repository: registry.cern.ch/ml-challenges
   tag: v0.0.6-alpha
-  image: frontend
-  pullPolicy: Always
-  apiBaseUrl: http://localhost:8083
+  apiBaseUrl: https://ml-next.cern.ch/challenges/api
   baseUrl: https://ml-next.cern.ch/challenges/ui/
 
 backend:
-  repository: registry.cern.ch/ml-challenges
   tag: v0.0.1-alpha
-  image: backend
-  pullPolicy: Always
   debug: "True"
   databaseUrl: <path:kv/data/mlops/services/challenges/next/db#connection_url#1>
-  sso:
-    urlPublicKeys: https://keycloak-qa.cern.ch/auth/realms/cern/protocol/openid-connect/certs
-    audience: hannes 
     
   kubeflow:
     url: https://ml-next.cern.ch
