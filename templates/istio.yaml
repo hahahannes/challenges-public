@@ -12,11 +12,7 @@ spec:
     - '*'
   http:
     # Backend
-    - headers:
-        request:
-          add:
-            x-forwarded-prefix: /challenges
-      match:
+    - match:
         - uri:
             prefix: /challenges/api
       rewrite:
@@ -27,11 +23,7 @@ spec:
             port: 80
 
     # UI
-    - headers:
-        request:
-          add:
-            x-forwarded-prefix: /challenges
-      match:
+    - match:
         - uri:
             prefix: /challenges/ui
       rewrite:
@@ -40,5 +32,17 @@ spec:
         - destination:
             host: frontend-svc.challenges.svc.cluster.local
             port: 80
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: "challenges"
+spec:
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        methods: ["GET", "POST", "DELETE", "PATCH", "PUT"]
+
 {{- else }}
 {{- end }}
