@@ -1,6 +1,3 @@
-istio:
-  enableVirtualService: false 
-  
 frontend:
   repository: registry.cern.ch/ml-challenges
   tag: v0.0.6-alpha
