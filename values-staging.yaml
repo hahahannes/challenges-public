@@ -1,12 +1,12 @@
 frontend:
-  tag: staging-latest
+  tag: v0.0.5-latest
   apiBaseUrl: http://ml-staging.cern.ch/challenges/api
   sso:
     clientId: challenges-staging
     enable: "false"
 
 backend:
-  tag: staging-latest
+  tag: v0.0.5-latest
   debug: "True"
   databaseUrl: <path:kv/data/mlops/services/challenges/staging/db#connection_url#1>
   sso:

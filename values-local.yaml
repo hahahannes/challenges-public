@@ -3,7 +3,7 @@ istio:
   
 frontend:
   repository: registry.cern.ch/ml-challenges
-  tag: v0.0.1-alpha
+  tag: v0.0.5-alpha
   image: frontend
   pullPolicy: Always
   apiBaseUrl: http://localhost:8083
@@ -15,7 +15,7 @@ frontend:
 
 backend:
   repository: registry.cern.ch/ml-challenges
-  tag: v0.0.1-alpha
+  tag: v0.0.5-alpha
   image: backend
   pullPolicy: Always
   debug: "True"
@@ -25,5 +25,5 @@ backend:
     audience: hannes 
     
   kubeflow:
-    url: https://ml-staging.cern.ch
+    url: https://ml-next.cern.ch
     experimentId: challenges
