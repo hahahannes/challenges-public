@@ -1,0 +1,15 @@
+frontend:
+  tag: v0.0.5
+  apiBaseUrl: http://ml.cern.ch/challenges/api
+  sso:
+    enable: "false"
+
+backend:
+  tag: v0.0.5
+  debug: "false"
+  databaseUrl: <path:kv/data/mlops/services/challenges/prod/db#connection_url#1>
+  sso:
+    audience: challenges-prod # TODO: kubeflow ?
+  
+  kubeflow:
+    url: https://ml.cern.ch
